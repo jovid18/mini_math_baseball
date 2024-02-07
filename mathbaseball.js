@@ -54,7 +54,7 @@ const calculateBallsAndStrikes = (answer, guess) => {
 
 // 가능한 숫자들 중 결과에 부합하지 않는 숫자를 제거하는 함수
 const updatePossibleNumbers = (result, guess) => {
-  console.log(result);
+  console.log(`시도 결과 : ${result}`);
   const toDelete = new Set();
   possibleNumbers.forEach((num) => {
     if (calculateBallsAndStrikes(num, guess) !== result) {
@@ -68,6 +68,7 @@ const updatePossibleNumbers = (result, guess) => {
 
 // 사용자로부터 입력을 받고 게임 로직을 처리하는 함수
 const query = () => {
+  console.log();
   read.question(`${attemptCount}번째 시도 : `, (num) => {
     if (!isValidInput(num)) {
       console.log(`유효하지 않은 입력입니다. 다시 입력해주세요.`);
@@ -81,7 +82,7 @@ const query = () => {
       attemptCount++;
       query();
     } else {
-      console.log(result);
+      console.log(`시도 결과 : ${result}`);
       console.log(`${attemptCount}번만에 맞히셨습니다.`);
       console.log(`게임을 종료합니다.`);
       read.close();
